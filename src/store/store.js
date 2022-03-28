@@ -36,7 +36,7 @@ export default new Vuex.Store({
     },
     removeTodo({ commit }, id) {
       axios.delete('https://jsonplaceholder.typicode.com/todos/' + id).then((response) => {
-        commit('removeTodoCommit', id)
+        commit('removeTodo', id)
       }).catch((err) => {
         console.log(err)
       })
@@ -53,7 +53,7 @@ export default new Vuex.Store({
   mutations: {
     setTodos: (state, todos) => (state.todos = todos),
     newTodo: (state, todo) => state.todos.unshift(todo),
-    removeTodoCommit: (state, id) => state.todos = state.todos.filter(todo => todo.id != id),
+    removeTodo: (state, id) => state.todos = state.todos.filter(todo => todo.id != id),
     updateTodo: (state, updTodo) => {
       const index = state.todos.findIndex(todo => todo.id === updTodo.id);
       if (index !== -1) {
