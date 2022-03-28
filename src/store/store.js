@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-// import todos from './modules/todo'
 import axios from 'axios'
 
 Vue.use(Vuex)
