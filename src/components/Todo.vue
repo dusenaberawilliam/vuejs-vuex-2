@@ -3,7 +3,7 @@
     <div class="todo">
       <div
         @dblclick="onDblClick(todo)"
-        v-for="(todo, index) in getTodos"
+        v-for="(todo, index) in todos"
         :key="index"
         class="all_todo"
       >
@@ -16,12 +16,16 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapActions } from "vuex";
 export default {
   name: "Todo",
   components: {},
 
-  computed: mapGetters(["getTodos"]),
+  computed: {
+    todos() {
+      return this.$store.state.todos;
+    },
+  },
   methods: {
     ...mapActions(["fetchTodos", "removeTodo", "updateTodo"]),
     onDblClick(todo) {
